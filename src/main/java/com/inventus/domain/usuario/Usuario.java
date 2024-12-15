@@ -1,5 +1,6 @@
 package com.inventus.domain.usuario;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,8 +24,14 @@ public class Usuario implements UserDetails {
     private Long id;
 
     private String nome;
+
+    @Column(unique = true)
     private String email;
+
+    @JsonIgnore
     private String senha;
+
+    @Column(unique = true)
     private String telefone;
 
     @Enumerated(EnumType.STRING)
